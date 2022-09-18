@@ -10,11 +10,12 @@
 
 ### Attention 추가
 
-- 각 단어의 hidden state 정보를 모두 decoder로 전달
+- 각 단어의 hidden state 정보(행렬)를 모두 decoder로 전달
 - decoder 부분의 주된 목적은 encoder에서 넘어온 정보를 사용하여 그에 해당하는 다른 도메인의 시퀀스 데이터 생성
 - Hidden state 정보를 그냥 사용하는 것이 아닌 예측하고자 하는 단어와 관련이 더 많은 단어에 대한 hidden state에 더 많은 주의를 기울임
 - encoder에서 넘어온 각 입력 단어들에 대한 hidden state 정보에 가중치를 줌
 - 입력된 단어에 서로 다른 가중치를 주는 것 = Attention
+- decoder에서 예측하고자 하는 단어에 대해 더 많은 가중치를 부여
 
 ![캡처](https://user-images.githubusercontent.com/80622859/177313852-b610a396-a6ff-4dd8-8d68-b0f1eae5aa67.PNG)
 
