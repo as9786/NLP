@@ -38,6 +38,28 @@
 
 - $U = \\{u_{-k},...,u_{-1}\\}$ : Token의 문맥 vector, n : layer의 수, $W_e$ : Token embedding matrix, $W_p$ : Position embedding matrix
 
-### 
+### Supervised fine-tuning
+- 언어 모형의 objective에 대해 model을 사전 학습한 후, 각 instance가 label y에 따른 입력 token $x^1, x^2,...,x^m$로 이루어져 있는 labeled dataset C를 가지는 target task에 대해 parameter 조정. 
+- 예측값을 얻기 위해 사전 훈련된 transformer model의 마지막 block의 activation $h^m_l$을 input으로 하는 선형 층을 추가
+
+![캡처](https://user-images.githubusercontent.com/80622859/193551906-ce9f4f98-5c11-4b0c-b37d-a8e11a2145b3.PNG)
+
+- 위의 층은 다음의 목적함수를 최대화하는 방향으로 학습
+
+![캡처](https://user-images.githubusercontent.com/80622859/193552032-3f093811-df56-4628-a728-6cedd10644ff.PNG)
+
+- 추가적으로 미세 조정에 보조 목적으로써 언어 모형을 추가하는 것이 지도학습 model의 일반화를 향상시키고 model이 빠르게 수렴하는데 도움을 줌
+- 이 보조 목적에서 연구자가 다음의 목적 함수 가중치를 최적화(hyperparameter)
+
+![캡처](https://user-images.githubusercontent.com/80622859/193552202-1ef36508-3a8e-47bd-bd2b-ad247291145c.PNG)
+
+- 전체적으로 미세 조정 과정에서 추가로 학습해야하는 parameter는 $W_y$와 delimiter tokem에 대한 embedding 밖에 없음
+
+![다운로드](https://user-images.githubusercontent.com/80622859/193552333-d96e29be-fe32-4c48-ac0e-f74ba3553e14.png)
+
+
+
+
+
 
 
