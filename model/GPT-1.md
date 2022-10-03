@@ -36,7 +36,7 @@
 
 ![캡처](https://user-images.githubusercontent.com/80622859/193550770-9095a0dd-22ed-4b72-9dba-200979f34111.PNG)
 
-- $U = {u_{-k},...,u_{-1}}$ : Token의 문맥 vector, n : layer의 수, $W_e$ : Token embedding matrix, $W_p$ : Position embedding matrix
+- $U = \{u_{-k},...,u_{-1}\}$ : Token의 문맥 vector, n : layer의 수, $W_e$ : Token embedding matrix, $W_p$ : Position embedding matrix
 
 ### 
 
