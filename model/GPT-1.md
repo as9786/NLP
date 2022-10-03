@@ -31,7 +31,13 @@
 
 ![캡처](https://user-images.githubusercontent.com/80622859/193550418-2f059dba-e204-43ee-8c69-16d4925b3eef.PNG)
 
-- k : context window의 크기, 
+- k : context window의 크기, $\Theta$ : 신경망의 parameter(해당 parameter는 SGD를 통해 훈련)
+- 학습을 위한 language model로 multi-layer transformer decoder를 사용
 
+![캡처](https://user-images.githubusercontent.com/80622859/193550770-9095a0dd-22ed-4b72-9dba-200979f34111.PNG)
+
+- $U = {u_{-k},...,u_{-1}}$ : Token의 문맥 vector, n : layer의 수, $W_e$ : Token embedding matrix, $W_p$ : Position embedding matrix
+
+### 
 
 
