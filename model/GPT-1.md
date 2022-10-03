@@ -23,3 +23,15 @@
 
 1. High-capacity language model을 학습
 2. 특정 task에 맞는 labeled data로 미세 조정
+
+## Framework
+
+### Unsupervised pre-training
+- Token으로 이루어진 corpus $v={v_1, v_2, v_3,...,v_n}$이 주어지면 다음의 우도를 최대화하는 standard language modeling objective를 사용
+
+![캡처](https://user-images.githubusercontent.com/80622859/193550418-2f059dba-e204-43ee-8c69-16d4925b3eef.PNG)
+
+- k : context window의 크기, 
+
+
+
