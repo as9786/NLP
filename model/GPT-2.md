@@ -54,4 +54,15 @@
 
 ![image](https://user-images.githubusercontent.com/80622859/195072687-d1bbaefa-7aba-424e-9ef1-c7fc06629a88.png)
 
-## 2.4 
+## 2.4 Language Modeling
+- GPT-2의 강점
+- Byte 수준에서 동작
+- WebText LM에 따른 dataset의 log 확률을 계산하는 방식으로 통일
+- \<UNK\>는 400억 byte 중 26번 밖에 나타나지 않음
+- Zero shot으로 8개 중 7개에서 SOTA 달성
+
+![캡처](https://user-images.githubusercontent.com/80622859/195073973-861bab89-ff66-45fc-8028-4ce64d94e759.PNG)
+
+## 2.5 Test
+
+ 
