@@ -51,3 +51,7 @@
 - 사전 개수 5만 여개로 확장
 - Context size가 1024개의 token으로 늘어남
 - Batch size = 512
+
+![image](https://user-images.githubusercontent.com/80622859/195072687-d1bbaefa-7aba-424e-9ef1-c7fc06629a88.png)
+
+## 2.4 
