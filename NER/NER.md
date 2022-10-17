@@ -34,3 +34,22 @@
 - O(outside) : token이 개체명이 아닐 때
 
 ![화면 캡처 2022-10-17 113121](https://user-images.githubusercontent.com/80622859/196082285-29f792d2-4304-4ed3-80ab-0038594877d6.png)
+
+# NER에 대한 다양한 접근과 딥러닝의 도입
+
+## 규칙 기반 접근(Rule-based approaches)
+- Domain specific한 사전(gazetteer)을 적용하거나 pattern을 적용해서 접근
+- 높은 정확도에 비해 낮은 재현율
+- 다른 domain에서 성능이 안 좋음
+
+## 비지도 학습 접근(Unsupervised learning approaches)
+- 문맥적 유사도에 기반해 군집하는 식으로 학습
+- 사전을 만드는 데에 비지도형 system 제안. 이는 지도 학습과 비교해 용어집이나 corpus의 통계적 정보, 혹은 얕은 수준의 통사적 지식에 의존
+
+## 변수 기반 지도 학습 접근(Feature-based supervised learning approaches)
+- Multi-class classification, sequence labeling task
+- Feature를 정하는 것이 중요한 문제
+
+- 요즈음에는 DL을 이용해 NER 해결
+- 변수 가공이 필요 없고, 선형 모형과 비교해 더 복잡하고 정교한 특성을 학습할 수 있음
+- 일련의 과정을 거치지 않고도 data를 넣어 바로 결과를 얻을 수 있는 end-to-end model 구현 가능
