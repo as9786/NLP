@@ -32,3 +32,5 @@
 - E-(end) : 개체명의 마지막에 위치할 때
 - S-(singleton) : 하나의 token이 곧 하나의 개치명일 때
 - O(outside) : token이 개체명이 아닐 때
+
+![화면 캡처 2022-10-17 113121](https://user-images.githubusercontent.com/80622859/196082285-29f792d2-4304-4ed3-80ab-0038594877d6.png)
