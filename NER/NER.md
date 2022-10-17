@@ -16,4 +16,19 @@
 
 # NER tagging system and label
 - 문장을 token 단위로 나누고, 이 token들을 각각 tagging 해서 개체명인지 아닌지를 분간
-- 
+- 단일 token이 아닌 여러 개의 tokens의 결합으로 하나의 개체명이 완성되는 경우가 있음
+- 여러 개의 token을 하나의 개체명으로 묶기 위해 tagging system 사용
+
+## BIO system
+- B-(begin) : 개체명이 시작할 때
+- I-(inside) : 개체명 중간에 있을 때
+- O(outside) : 개체명이 아닐 경우
+
+![화면 캡처 2022-10-17 113047](https://user-images.githubusercontent.com/80622859/196076559-e7d65cdf-eaf6-406c-993e-68ec94b52453.png)
+
+## BIESO system
+- B-(begin) : 개체명이 시작할 때
+- I-(inside) : 개체명 중간에 있을 때
+- E-(end) : 개체명의 마지막에 위치할 때
+- S-(singleton) : 하나의 token이 곧 하나의 개치명일 때
+- O(outside) : token이 개체명이 아닐 때
