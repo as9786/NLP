@@ -89,3 +89,11 @@
 
 ### Stage Two : Learning the Prior 
 - $phi$와 $theta$를 고정한 text와 image token에 대한 prior distribution을 학습
+
+- Text와 image 쌍이 주어질 때 caption은 소문자화한 후 16.384개 단어 사전을 사용해 BPE(최대 256 token)
+- Image는 32x32 = 1024 token으로 encoding. 이 때 단어 사전의 수는 8192
+- Image token은 dVAE encoder logit에서 argmax sampling을 통해 얻음
+- 최종적으로 text와 image token을 이어붙여서 하나의 data stream으로 모형에 입력
+
+### Mixed-Precision Training
+- 
