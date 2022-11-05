@@ -59,3 +59,33 @@
 - 이러한 압축을 통해 transformer가 처리해야 하는 context 크기를 192배 압축하면서 시각적 품질은 유지
 
 ![캡처](https://user-images.githubusercontent.com/80622859/200107289-bb2bdaf3-159d-4c26-91d4-e096f050d9df.PNG)
+
+### Stage 2.
+- 256개의 BPE된 text token과 32x32=1024 image token을 이어 붙여서 transformer에 입력
+- Text와 image token에 대한 결합 확률 분포를 학습
+
+![캡처](https://user-images.githubusercontent.com/80622859/200107712-6f1e9821-e43a-4067-a70b-b4415def2b6d.PNG)
+
+- x : image, y : caption
+- Encoding된 RGB image에 대한 token x의 결합확률분포에 대한 ELB(Evidence lower bound)를 최대화하는 과정
+- lower bound
+
+![캡처](https://user-images.githubusercontent.com/80622859/200107768-81182801-265f-4aec-a76a-cd008483b870.PNG)
+
+## Method-detail
+
+### Stage One : Learning the Visual Codebook
+- $\pi$와 $\theta$에 대해 ELB를 최대화 = image만에 대해 dVAE를 학습
+- $q_p h_i$는 이산 확률 분포이기 때문에 미분값을 최대화하기 위해 reparameterize하기 어려움
+- Gumbel-softmax relaxation을 사용. $q_p h_i$에 대한 기댓값을 $q_p h_{i}^T$로 대체
+- Relaxed ELB는 Adam을 최대화하고, exponentially weighted iterate averaging을 사용
+
+- 안정적인 학습을 위해 다음과 같이 세 가지 사용
+1. Relaxation temperature와 step size에 대한 annealing schedule : T = 1/16으로 하면 relaxed validation ELB가 실제 ELB와 거의 유사
+2. Encoder의 마지막과 decoder의 시작점에 1x1 합성곱 사용 : 일반화 높아짐
+3. Encoder와 decoder resblock에서 나가는 activation에 작은 상수 곱하기 : 시작 부분에서 학습이 안정적
+
+- KL weight beat = 6.6으로 설정했을 때 학습이 끝난 후 재구성 손실 값이 가장 작다는 것을 실험적으로 발견
+
+### Stage Two : Learning the Prior 
+-
