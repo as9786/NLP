@@ -96,4 +96,6 @@
 - 최종적으로 text와 image token을 이어붙여서 하나의 data stream으로 모형에 입력
 
 ### Mixed-Precision Training
-- 
+- GPU 연산 자원을 아끼고 throughput을 증대하기 위해 16-bit precision 사용
+- Activation checkpointing & backward pass에서 reblock 내의 activation을 재연산
+- 10억개 넘는 parameter를 16-bit 정밀도를 사용해 diverge하지 않게 학습하는 것이 어려움 => Per-resblock gradient scaling
