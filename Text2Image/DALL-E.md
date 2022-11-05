@@ -88,4 +88,4 @@
 - KL weight beat = 6.6으로 설정했을 때 학습이 끝난 후 재구성 손실 값이 가장 작다는 것을 실험적으로 발견
 
 ### Stage Two : Learning the Prior 
--
+- $phi$와 $theta$를 고정한 text와 image token에 대한 prior distribution을 학습
