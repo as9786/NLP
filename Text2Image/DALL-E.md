@@ -42,4 +42,20 @@
 - 기존의 연구는 특정 dataset에 대해 잘 작동하는 modeling 기법을 찾아내는 데 집중
 - 이와 같은 과정에서 복잡한 구조나 보조 손실함수, 추가적인 정보가 활용. ex) AttnGAN, DM-GAN, DF-GAN 등
 
+## Idea
+- 120억 개 parameters의 auto-regressive transformer modle을 2억 5천만 장의 image-text 쌍에 대해 학습
+- 유연하면서 자연어로 통제 가능한 image generation model을 학습
+- MS-COCO dataset에서 zero-shot으로도 높은 성능
+- 자연어로 묘사한 다양한 컨셉을 꽤나 창의적이고 그럴듯한 방법으로 조합
 
+![캡처](https://user-images.githubusercontent.com/80622859/200107176-1408bb45-bb7f-46aa-84de-2e7f71bdd096.PNG)
+
+- DALL-E의 목표 : 자가 회귀적으로 text와 image token을 하나의 stream으로 받아들여 transformer를 학습
+- 엄청난 memory의 소모를 해결하기 위해 2 단계 학습 사용
+
+### Stage 1.
+- Discrete VAE를 학습하여 256x256 RGB image를 32x32 grid image token으로 압축
+- 각각의 image token은 8192가지 값을 가질 수 있다고 가정
+- 이러한 압축을 통해 transformer가 처리해야 하는 context 크기를 192배 압축하면서 시각적 품질은 유지
+
+![캡처](https://user-images.githubusercontent.com/80622859/200107289-bb2bdaf3-159d-4c26-91d4-e096f050d9df.PNG)
