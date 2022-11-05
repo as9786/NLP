@@ -1,4 +1,5 @@
 # DALL-E
+-https://littlefoxdiary.tistory.com/74
 
 ## MS-COCO
 - https://cocodataset.org/#captions-2015&gt;
