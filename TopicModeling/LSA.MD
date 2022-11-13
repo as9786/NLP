@@ -38,7 +38,18 @@
 
 <img width="123" alt="3" src="https://user-images.githubusercontent.com/80622859/201514963-186d955c-ccbc-4565-bed8-4f1deaf442f6.png">
 
+- SVD를 통해 나오 대각 행렬은 내림차순으로 정렬 됨
+- 해당 원소의 값을 A의 특이값(singular value)라고 함
 
+<img width="126" alt="캡처" src="https://user-images.githubusercontent.com/80622859/201514993-66b3d2dd-6cb4-419f-a61f-0211b8e31e42.PNG">
 
+# 절단된 SVD(Truncated SVD)
+- Full SVD에서 나온 3개의 행렬에서 일부 vector들을 삭제시킨 것
 
+<img width="315" alt="캡처" src="https://user-images.githubusercontent.com/80622859/201515033-4e353ccf-f78f-459a-818c-0a76a13728a5.PNG">
 
+- 대각 행렬의 특이값 중에서 상위 t개만 남김
+- U행렬과 V 행렬의 t열까지만 남김
+- t는 우리가 찾고자 하는 주제의 수(초매개변수)
+- t를 크게 잡으면 기존의 행렬 A로부터 다양한 의미를 가져갈 수 있음
+- t를 작게 잡아야 noise 제거(설명력이 낮은 정보 제거)
