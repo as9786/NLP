@@ -9,3 +9,5 @@
 - 위의 문제점을 해결하기 위해 DTM의 잠재된 의미를 이끌어내는 방법으로 LSA 등장
 - LSI라고 부르기도 함. Latent Semantic Indexing
 - 특잇값 분해에 기반한 방법
+
+$\Sigma$
