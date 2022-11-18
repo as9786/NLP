@@ -67,4 +67,23 @@
 ![image](https://user-images.githubusercontent.com/80622859/202713327-e6a5c958-cda8-40b1-b9c5-7926c80e40ff.png)
 
 
-### 4.3 Generation with RNN-Based Language Models
+## 4.3 Generation with RNN-Based Language Models
+- 문장 마커의 시작인 <s>를 첫 번째 입력으로 사용한 결과로 발생하는 소프트맥스 분포의 출력에서 단어를 샘플링합니다.
+- 첫 번째 단어에 대한 임베딩이라는 단어를 다음 시간 단계에서 네트워크에 대한 입력으로 사용한 다음 같은 방식으로 다음 단어를 샘플링합니다. 
+- 문장 끝 마커인 </s>가 샘플링되거나 고정 길이 제한에 도달할 때까지 생성을 계속합니다.
+- 자기 회귀 모형 : t-1,t-2 등에서 이전 값의 선형 함수를 기반으로 시간 t에서 값을 예측하는 모형
+
+![image](https://user-images.githubusercontent.com/80622859/202714160-d9d82221-97b5-41ef-a60e-84245d51b95e.png)
+
+# 5. Stacked and Bidirectional RNN architectures
+
+## 5.1 Stacked RNNs
+
+![image](https://user-images.githubusercontent.com/80622859/202714274-08f5a10f-86c8-452c-8cf9-bec976c373b2.png)
+
+- 한 계층의 출력이 후속 계층의 입력값으로 들어감
+- 일반적으로 단일 계층 신경망보다 성능이 뛰어남
+- 신경망 계층에 거쳐 서로 다른 수준의 추상화로 표현을 유도하기 때문
+- Stack의 수가 증가할수록 cost가 빠르게 증가
+
+
