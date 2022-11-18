@@ -50,4 +50,21 @@
 # 4. RNNs for other NLP tasks
 
 ## 4.1 Sequence Labeling
-- 
+
+![image](https://user-images.githubusercontent.com/80622859/202712920-079e2858-ed62-4398-ac2e-272fc5b78b57.png)
+
+## 4.2 RNNs for Sequence Classification
+- Token이 아닌 전체 sequence를 분류하는 것
+- Text의 마지막 token인 $h_n$에 대한 은닉층을 사용하여 전체 sequence의 압축된 표현을 구성할 수 있음
+
+![image](https://user-images.githubusercontent.com/80622859/202713092-1bded85e-f5f6-4e56-b70c-e40d05e372ca.png)
+
+- 마지막 요소 앞의 경우에는 중간 출력이 필요하지 않음
+- 손실함수는 최종 text 분류 작업에만 사용
+- Downstream application의 손실을 사용하여 신경망을 통해 전체 가중치를 조정하는 훈련을 end-to-end training이라고 함
+- 모든 은닉층의 출력값을 평균내는 것도 하나의 방법
+
+![image](https://user-images.githubusercontent.com/80622859/202713327-e6a5c958-cda8-40b1-b9c5-7926c80e40ff.png)
+
+
+### 4.3 Generation with RNN-Based Language Models
