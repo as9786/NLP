@@ -86,4 +86,147 @@
 - 신경망 계층에 거쳐 서로 다른 수준의 추상화로 표현을 유도하기 때문
 - Stack의 수가 증가할수록 cost가 빠르게 증가
 
+## 5.2 Bidirectional RNNs
+- 기본적으로 RNN은 왼쪽 정보 이용
+- 오른쪽에서도 정보를 이용하는 방안으로 왼쪽->오른쪽, 오른쪽->왼쪽의 흐름을 학습하도록 구성
+
+![image](https://user-images.githubusercontent.com/80622859/202715661-83adbaf3-f864-481b-9a4c-aceb8060b18c.png)
+
+
+- $h^f_t$ : 단순히 t 시간의 은닉층에 대한 정보를 나타내며, 지금까지 수집한 모든 것을 나타냄
+
+![image](https://user-images.githubusercontent.com/80622859/202715787-f04a4287-5b4d-422f-b91d-50f8c8e5a51d.png)
+
+- 역으로 입력을 받음
+- 위 두 개의 정보를 vector 연결
+
+![image](https://user-images.githubusercontent.com/80622859/202715886-cc3b4859-403b-4ce8-8557-c4bd21c721d7.png)
+
+- 양방햔 순환신경망은 분류에서 상당히 효과가 좋다고 알려져 있음
+
+![image](https://user-images.githubusercontent.com/80622859/202716045-c34fd095-ec0b-4673-bc95-44abecdcbbb4.png)
+
+
+# 6. LSTM
+- 거리가 멀리 있는 단어에 대한 정보를 잘 기억해야함
+- Vanilla RNN은 은닉층과 더 나아가 은닉층의 값을 결정하는 가중치가 현재 결정에 유용한 정보를 제공하고 미래에 필요한 정보를 최신화하고 전달하는 두 가지 작업을 동시에 수행하도록 요청 받음
+- 반복적인 곱셈 과정으로 가중치 값이 0에 가까워짐
+- 위의 두 가지 이유로 거리가 먼 단어에 대한 학습이 잘 안될 수 있음
+- 이러한 문제를 해결하기 위해 더 복잡한 모형들은 신경망이 더 이상 필요하지 않은 정보를 잊어버리고 앞으로 있을 의사결정에 필요한 정보를 배울 수 있게 함으로써 시간이 지남에 따라 관련 맥락을 유지하는 작업을 관리하도록 설계
+- 대표적인 모형 : LSTM
+- LSTM의 gate는 Feed forward layer, sigmoid, gate layer와 함께 요소별 곱셈으로 구성
+- 활성화 함수로 sigmoid를 쓰는 이유는 0과 1로 값을 출력하고 이는 요소별 곱을 수행할 시 masking 효과를 줄 수 있음
+- Mask에서 1에 가까운 값과 일치하는 gate layer의 값은 거의 변경되지 않고 통과 됨
+- 더 낮은 값들은 지워짐
+- forget gate : 더 이상 필요 없는 context에서 정보를 삭제
+
+![image](https://user-images.githubusercontent.com/80622859/202716901-55942ea0-d86d-4baa-b17c-fe81ebd05e9e.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202716917-b81c76af-6069-471c-bf13-0521ac8bb92f.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202716931-db4fcc17-3b6e-43e7-92c3-7085c075d299.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202716941-55639751-a725-4dcf-b072-2511f05906bb.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202716956-34341860-9bb8-4b32-9657-53ae20293e07.png)
+
+- Output gate : 현재 은닉층에서 필요한 정보를 결정하는데 사용
+
+![image](https://user-images.githubusercontent.com/80622859/202717013-8f055863-c069-429d-b45a-36928fa0f058.png)
+
+
+## 6.1 Gated Units, Layers and Networks
+
+![image](https://user-images.githubusercontent.com/80622859/202717111-9e16b102-9b41-4da4-9196-9c6da820e7d8.png)
+
+- LSTM unit의 증가된 복잡성은 unit 자체 내에 캡슐화
+
+# 7. Self-Attention Networks: Transformers
+- Gate를 활용하면 더 먼 정보를 처리할 수 있지만 기본 문제를 해결하지 못함.
+- 순차적인 특성은 병렬 처리를 힘들게 함
+- Transformer는 input vector의 sequence를 동일한 길이의 output vector의 sequence에 mapping
+- self-attention layer, feed forward network의 결합이 된 다층 transformer block의 stack으로 구성
+- self-attention은 신경망이 순환신경망과 같이 중간 반복 연결을 통해 정보를 전달할 필요 없이 임의의 큰 context에서 직접 정보를 추출하고 사용할 수 있게 함
+
+![image](https://user-images.githubusercontent.com/80622859/202717651-ffbfa86b-d594-4f0b-82ac-1740499fc8ba.png)
+
+ - 입력의 각 항목을 처리할 때 입력 정보 이외에는 접근 불가
+ - 이러한 접근 방식은 언어 모형을 생성하고, 생성 모형을 사용할 수 있음을 보장
+ - 전진 추론과 훈련을 모두 쉽게 병렬화 가능
+
+![image](https://user-images.githubusercontent.com/80622859/202717851-3aa2b89c-ca46-4054-ab0d-9c1181bd22a0.png)
+
+- y3의 계산은 입력 x3와 이전 요소들 그리고 자기 자신을 비교 세트로 계산
+- 내적의 결과는 양의 무한대에서 음의 무한대, 값이 클수록 vector 간 유사
+- 점수를 효과적으로 사용하기 위해 softmax 연산 -> 가중치 vecotr $\alpha$ 생성
+
+![image](https://user-images.githubusercontent.com/80622859/202718120-00f80a9b-a3f0-448b-a76b-8c057216ca5b.png)
+
+- 지금까지 본 입력의 합계를 각각의 $alpha$ 값으로 가중치를 부여하여 출력값 $y_i$ 생성
+- Q : 다른 이전 쿼리 입력과 비교할 때 현재 attention의 초점으로 사용
+- K : 현재의 attention 초점과 비교되는 선행 입력으로서의 역할
+- V : 현재 attention의 초점에 대한 출력을 계산하는 데 사용
+
+![image](https://user-images.githubusercontent.com/80622859/202718450-0f6f839d-fcb6-471d-be3a-af435b01acf0.png)
+
+- Transformer의 입력 x와 출력 y는 모두 동일한 차원을 가짐. (1 x d)
+- 모든 가중치 행렬들은 dxd 차원
+- 논문에서 d = 1024
+- 큰 값이 나왔을 경우 지수화하면 경사 손실이 발생할 수 있음
+- 이를 방지하기 위해 아래처럼 식을 수정
+
+![image](https://user-images.githubusercontent.com/80622859/202718732-03e2be58-b0ef-47bd-96e4-2c92595ba3f7.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202718741-cc16b96e-002c-40e4-8b38-d30ef342b3d2.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202718761-9109e577-c6f2-4e76-8c7e-9732ea88146a.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202718786-9640ed58-2054-44ca-9486-35dd30ac6ff8.png)
+
+- 언어 모형의 구조를 올바르게 짜기 위해 아래와 같이 masking 처리
+
+![image](https://user-images.githubusercontent.com/80622859/202718869-c08e86a8-d07a-4a92-867d-c8434c0fac9c.png)
+
+## 7.1 Transformer Blocks
+- residual layer에서 layer normalization 진행 : z-점수의 변형
+- Residual layer : 중간 과정을 거치지 않고 하위 계층에서 상위 계층으로 정보 전달 => 학습 성능 개선
+
+![image](https://user-images.githubusercontent.com/80622859/202719039-59c01667-bc4f-4065-bfc9-8935203d20fc.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202719207-b704dbb3-0305-4909-b7b9-dc4e481e34f4.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202719218-d76f2a5a-1941-4a82-b748-2f938aaab945.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202719233-37667ead-2460-47d4-8a48-03d6ffd5793f.png)
+
+## 7.2 Multihead Attention
+- 동이한 깊이의 Multi head attention을 사용함으로써 병렬 처리
+- 각 head는 동일한 추상화 수준에서 입력 사이에 존재하는 관계의 다른 측면을 학습할 수 있음
+- 각 head는 고유한 가중치 행렬들을 갖게 됨
+
+![image](https://user-images.githubusercontent.com/80622859/202719454-770a2655-9584-4bfa-9a4e-44ed69d55500.png)
+
+
+## 7.3 Modeling word order: positional embeddings
+- 각 token의 위치 정보를 알려주기 위해 사용
+
+![image](https://user-images.githubusercontent.com/80622859/202719554-a11f77b3-4d1a-4f40-85d5-ab66857ce5d0.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202719574-0b295b9d-6b70-4565-bf83-46a6cd819107.png)
+
+# 8. Transformers as Language Models
+
+![image](https://user-images.githubusercontent.com/80622859/202719642-1f97d32e-d6c3-4689-9454-a10f4c3010e0.png)
+
+- 새로운 text를 자동 회귀적으로 생성 가능 
+
+# 9. Contextual Generation and Summarization
+
+![image](https://user-images.githubusercontent.com/80622859/202719761-907a00e3-556b-4c9b-a852-9eabd0bffaf8.png)
+
+![image](https://user-images.githubusercontent.com/80622859/202719821-ed12f5e4-5e06-4c24-8ca9-7b1cee4bebef.png)
+
+
+
+
 
