@@ -6,3 +6,6 @@
 
 ### CUB
 - https://arxiv.org/pdf/1605.05395.pdf&gt;
+
+# Stable Diffusion
+-https://brunch.co.kr/@advisor/43
