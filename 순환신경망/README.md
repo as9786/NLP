@@ -14,3 +14,6 @@
 - https://www.turing.com/kb/comprehensive-guide-to-lstm-rnn
 ## GRU
 - https://itrepo.tistory.com/40
+
+# 시간펼침 역전파
+- https://excelsior-cjh.tistory.com/184
