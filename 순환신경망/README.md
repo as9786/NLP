@@ -12,6 +12,7 @@
 - https://stats.stackexchange.com/questions/276388/update-of-the-cell-state-functions-in-lstm-rnns-interplay-of-sigmoid-and-tanh
 - https://datascience.stackexchange.com/questions/32217/how-is-the-lstm-rnn-forget-gate-calculated
 - https://www.turing.com/kb/comprehensive-guide-to-lstm-rnn
+- https://datascience.stackexchange.com/questions/82808/whats-the-difference-between-the-cell-and-hidden-state-in-lstm
 ## GRU
 - https://itrepo.tistory.com/40
 
