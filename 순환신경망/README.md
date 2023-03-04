@@ -15,6 +15,6 @@
 - https://datascience.stackexchange.com/questions/82808/whats-the-difference-between-the-cell-and-hidden-state-in-lstm
 ## GRU
 - https://itrepo.tistory.com/40
-
+- https://curaai00.tistory.com/7
 # 시간펼침 역전파
 - https://excelsior-cjh.tistory.com/184
