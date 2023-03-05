@@ -38,3 +38,20 @@
 ![image](https://user-images.githubusercontent.com/80622859/222959094-18b9dd01-f942-4b34-8f6f-45cafe2d38c6.png)
 
 - 은닉 상태에 attention value를 이어 붙이기까지 하면 끝
+
+## Attention의 구현
+
+- Input/Output tensor에 대한 이해가 중요
+
+### Encoder 입출력
+
+![image](https://user-images.githubusercontent.com/80622859/222959822-553ce3b7-53d0-4763-ac09-a71b80c99321.png)
+
+### Deocder 입출력(학습 단계)
+
+![image](https://user-images.githubusercontent.com/80622859/222959859-9c7ec045-b0e8-4002-aa07-ad892e5c3641.png)
+
+### Output w/ Attention (학습 단계)
+
+![image](https://user-images.githubusercontent.com/80622859/222959878-20b655ab-2544-4882-ad35-45fc94a2f3c2.png)
+
