@@ -18,3 +18,4 @@
 - https://curaai00.tistory.com/7
 # 시간펼침 역전파
 - https://excelsior-cjh.tistory.com/184
+- https://emcslabs.github.io/machinelearning/truncated_bptt
