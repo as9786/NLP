@@ -17,9 +17,11 @@
 
 ## Attention mechanism
 
-![image](https://user-images.githubusercontent.com/80622859/222952366-492d80b7-8a62-49d3-a4dd-ce7459c854bd.png)
+![image](https://user-images.githubusercontent.com/80622859/222958903-98a6ab7b-b9fa-47f4-8216-4511fadf41b4.png)
 
 - Q에 대해 어떤 K가 유사한지 비교하고, 유사도를 반영하여 V들을 합성한 것 = Attention value
+- Compare 함수로는 dot-product(inner product)가 많이 쓰이며, aggregation은 weight sum을 많이 사용
+
 
 ## Seq2seq - Key-Value
 
@@ -28,3 +30,11 @@
 - Decoder의 은닉층들을 query로 사용
 - Encoder와 달리 하나 앞선 time-step의 은닉층을 사용
 - RNN으로 은닉 상태를 입력하기 전에, attention value를 이어 붙여서 입력
+
+### Seq2seq - Attention mechanism
+
+![image](https://user-images.githubusercontent.com/80622859/222959072-cb15a5e2-f323-4e73-a1e9-d4680897fac3.png)
+
+![image](https://user-images.githubusercontent.com/80622859/222959094-18b9dd01-f942-4b34-8f6f-45cafe2d38c6.png)
+
+- 은닉 상태에 attention value를 이어 붙이기까지 하면 끝
