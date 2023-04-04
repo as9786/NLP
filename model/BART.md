@@ -124,5 +124,148 @@
 
 ### Comparison Objectives
 
-- 
+#### 1. Language Model
 
+- GPT. Left-to-right transformer language model
+- BART의 decoder와 동일(cross-attention을 수행하진 않음)
+
+#### 2. Permuted Langauge Model
+- XLNet 기반 모형. 1/6 token만큼 sampling하여 이를 임의의 순서로 생성하는 모형
+- 문장의 양방향을 고려하여 학습 가능
+
+#### 3. Masked Language Model
+- BERT와 같은 modeling 방법, 15%의 token을 [MASK]로 치환하고 모형을 각 token마다 기존 token을 예측하도록 훈련
+
+#### 4. Multitask Masked Language Model
+
+- UniLM에서 제안한 방법, MLM을 추가적인 self-attention mask를 통해 훈련
+- Self attention의 mask는 임의의 비율로 선택
+- 1/6 left-to-right, 1/6 right-to-left, 1/3 unmasked, 그리고 1/3의 처음 50% token은 unmask, 나머지 비율은 left-to-right mask
+
+#### 5. Masked Seq-to-Seq 
+- MASS
+- 50% token을 포함하는 span을 mask하고, seq2seq model로 masked token을 예측
+
+- left-to-right 방식 : 현재 time step의 왼쪽 token들만 반영
+- 논문 실험 조건
+1. 작업을 일반적인 seq2seq 문제로 취급. 입력을 encoder에 넣고 정답은 decoder의 출력이 된다
+2. Source를 target의 prefix에 추가하여 decoder에 넣고, sequence의 target part의 손실만 계산(전형적인 decoder model)
+
+- 1이 BART에 더 잘 작동
+
+## Tasks
+
+### SQuAD
+
+- Wikipedia 문단에 대한 extractive QA 
+- Wikipedia에서 따온 본문과 질문이 주어지면 주어진 본문으로부터 정답에 해당하는 text span을 찾는 문제
+- 문제와 context를 이어붙인 것을 encoder의 입력으로하고 decoder를 통해 예측
+- 각 token의 시작과 끝 index를 예측하는 분류기가 포함되어 있음
+- Start token과 end token의 위치를 예측하는 분류기가 2개
+
+### MNLI
+- 두 개의 문장에 대한 분류 작업으로 하나의 문장이 다른 문장을 포함하는지, 즉 이전 문장과 이후 문장의 관계가 성립하는지 예측하는 작업
+- BART는 두 개의 문장을 EOS token(문장의 끝)을 추가해 합치고, 이를 encoder와 decoder에 넣음
+- EOS가 문장 관계를 분류하는데 사용
+
+### ELI5
+- 긴 형식의 abstractive QA
+- 문제와 추가적인 문서를 붙인 것으로 조건으로 주어 답을 생성
+
+### XSum
+- News summarizationt task
+- 함축된 요약을 생성
+
+### ConvAI2
+- 대화와 답변에 대한 생성 작업
+- Context와 persona(화자)를 조건으로 줌
+
+### CNN/DM
+- News summarizationt task
+
+![image](https://user-images.githubusercontent.com/80622859/229827898-d40e5bf2-a32d-4754-9c5c-ade85965b74a.png)
+
+1. 사전 학습 방법론의 성능은 task 별로 확연한 차이가 있음
+- 사전학습 방법론의 효율성은 작업에 크게 의존
+- 간단한 언어 모형은 ELI5 dataset에서 최고의 성능, SQuAD task에서는 최악
+
+2. Token Masking is important
+- Rotating document나 permuting sentences 기반 사전학습 방법론은 해당 목적 함수로만 훈련시켰을 때 성능이 좋지 않음
+- 성공적인 방법론들은 token deletion이나 token masking, 혹은 self-attention mask를 사용하는 방법
+- Token deletion은 생성 작업에서 token masking보다 더 좋은 성능
+
+3. Left-to-right 기반 언어 모형은 생성 작업에 효과적
+- Masked Language model과 permuted language model은 생성 작업에서 다른 것들보다 성능이 떨어짐
+- 위 두 모형은 사전 학습 단계에서 left-to-right auto-regressive language modeling을 적용하지 않은 모형들
+
+4. Bidirectional encoder is important in SQuAD
+
+5. 사전 학습 방법론 이외에도 중요한 요소가 있음
+- Permuted language model은 기존 XLNet보다 성능이 떨어짐
+- XLNet 구조를 그대로 따르지 않고 사전 학습 방법만 따름
+
+6. Vanilla language model이 ELI5에서 최고의 성능
+- BART는 느슨하게 연관되어 있는 문서에 대해 출력을 내는 작업에 덜 효과적
+
+7. BART는 가장 일관성 있게 강력한 성능
+- BART를 text infilling으로 학습한 모형이 모든 작업에서 좋은 성능을 보여줌
+
+## Large-scale Pre-training Experiments
+
+- 사전 학습은 큰 배치 크기와 큰 corpora로 이루어 졌을 때 downstream task의 성능이 엄청나게 증가(GPT)
+- BART를 RoBERTa와 같은 scale로 훈련
+
+### Experimental Setup
+
+- Encoder와 decoder를 각각 12개를 두고 1024의 은닉 크기로 둔 큰 모형을 사전 학습
+- 사전학습으로 8000 배치 사이즈, 모형을 500000 번 학습
+- BPE 이용
+- Text infilling, sentence permutation을 조합한 사전 학습 함수 사용
+- 30% token을 각 문서에 masking, 모든 문장을 섞음
+- 마지막 10% 학습에서는 dropout 적용 X
+- RoBERTa에서 사용한 data 사용(News, 책, 이야기 ,web text로 이루어진 160GB의 크기)
+
+### Result
+
+### Discriminative tasks
+
+![image](https://user-images.githubusercontent.com/80622859/229830956-dd81e00a-a440-490f-bff7-c1bfbcb3833b.png)
+
+- 생성 작업에서의 성능 향상이 판별 작업에 대한 성능에 영향을 미치지 않음
+- RoBERTa와 전체적으로 비슷함
+
+### Generation Tasks
+
+- BART는 미세 조정 단계에서 label smoothed cross entropy loss 사용. Smoothing parameter는 0.1로 설정
+- Beam size = 5, beam search에서 중복된 trigram을 삭제, min-len, max-len, length penalty를 validation set을 생성할 때 모형에 적용
+
+#### Summarization
+
+![image](https://user-images.githubusercontent.com/80622859/229831752-5b4cd4cb-1b87-4f2d-b552-2d89e1a63abf.png)
+
+- 상당한 성능 향상
+- 질적으로도 요약에 대한 질이 좋았음
+
+#### Dialogue
+
+![image](https://user-images.githubusercontent.com/80622859/229832278-34eb2ac7-811e-4e5c-812e-a586917a0792.png)
+
+- 이전 문맥과 text로 명시된 화자 둘 다 고려하여 응답을 생성
+- F1 score, valid perplexity를 이용
+
+#### Abstractive QA
+
+![image](https://user-images.githubusercontent.com/80622859/229832450-1adb31b1-0af1-47f1-ba19-ba5dcf8b1757.png)
+
+### Translation Task
+
+![image](https://user-images.githubusercontent.com/80622859/229832656-1425ecbe-b191-4d29-b23b-2cc404d99e86.png)
+
+![image](https://user-images.githubusercontent.com/80622859/229832928-16bbd275-ca52-4b89-af7b-23a4bc232d2f.png)
+
+- BART는 요약 쪽에 강점
+
+## Conclusions
+
+- 손상된 문서를 기준 문서로 사상하는 것으로 학습하는 사전학습 방법론
+- 생성 분야에서 강점
