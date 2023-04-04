@@ -29,6 +29,15 @@
 - Abstractive dialogue, QA, 요약에서 SOTA
 - 기계 번역에서도 좋은 성능
 
+![image](https://user-images.githubusercontent.com/80622859/229732879-ceeaefe1-fdcb-44e3-88bf-9357abf62770.png)
+
+- 기계 번역을 위한 사전 학습된 decoder를 사용하고 새로운 encoder를 추가해서 encoder-decoder를 미세 조정
+- 새로운 encoder는 외국어를 BART가 학습한 언어와 사상되는 역할
+- 새로운 encoder는 BART와 다른 단어를 사용할 수 있음
+- 학습을 두 단계로 함. Cross-entropy loss로 역전파 수행
+1. 대부분의 BART parameter들은 그대로 두고 encoder와 BART의 position embedding, BART encoder의 첫 번째 layer(projection, embedding)만 학습
+2. 모든 parameter 학습
+
 ## Model
 
 - 손상된 문서를 기존 문서로 되돌리는 denoising autoencoder 
@@ -63,6 +72,8 @@
 - Token masking과 달리 모형은 누락된 입력 위치를 결정
 
 ### 3. Text infilling
+- 몇 개의 text들을 샘플링 하여 한 span의 길이는 포아송 분포를 따
 - Poisson distribution 추출한 span length($\lambda$)를 사용하여 여러 text span을 표본으로 추출
 - 각 Span은 단일 mask token으로 대체
-- 길이가 0인 span은 
+- 길이가 0인 span 또한 mask token으로 치환
+- 
