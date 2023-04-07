@@ -15,3 +15,6 @@
 
 # BART
 - https://chloelab.tistory.com/34
+
+# SpanBERT
+- https://jeonsworld.github.io/NLP/spanbert/
