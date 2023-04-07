@@ -25,4 +25,4 @@
 
 ### 2.1 Span Masking
 
-- Token으로 구성된 sequence X = $(x_1, ..., x_n)이 주어지면 masking budget(15% of X)이 사용될 때까지 text span을 반복적으로 추출(token Y, $Y\subseteq X)
+- Token으로 구성된 sequence X = $(x_1, ..., x_n)이 주어지면 masking budget(15% of X)이 사용될 때까지 text span을 반복적으로 추출(token Y, $Y\subseteq X$)
