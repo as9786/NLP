@@ -27,3 +27,10 @@
 
 - Token으로 구성된 sequence X = $(x_1, ..., x_n)이 주어지면 masking budget(15% of X)이 사용될 때까지 text span을 반복적으로 추출
 - token Y, $Y \subseteq X$
+- 각 반복마다 기하 분포 $\ell ~ Geo(p)$를 통해 span length sampling
+- 해당 분포는 더 짧은 span으로 편향됨(skewed)
+- Span의 시작점을 무작위로 균일하게 선택
+- p = 0.2로 설정하고, $\ell_{max} = 10$으로 제한. $\bar\ell=3.8$의 평균 span length를 반환
+- Subword token이 아닌 완전한 단어를 span lenth로 측정하여 mask range를 넓게 만듦
+
+![image](https://user-images.githubusercontent.com/80622859/230545172-c08f237c-ecd0-4e9e-932e-a6e2cd4278a2.png)
