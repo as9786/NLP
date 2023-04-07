@@ -34,3 +34,25 @@
 - Subword token이 아닌 완전한 단어를 span lenth로 측정하여 mask range를 넓게 만듦
 
 ![image](https://user-images.githubusercontent.com/80622859/230545172-c08f237c-ecd0-4e9e-932e-a6e2cd4278a2.png)
+
+- BERT에서와 같이 총 15% token을 masking
+- Masked token의 80%는 [MASK], 10% random token, 10% original token으로 설정
+- Span level에서 수행하기 때문에 범위의 모든 token이 [MASK] 또는 표본 추출된 token
+
+### 2.2 Span Boundary Objective(SBO)
+
+- 일반적으로 boundary token(시작과 끝)을 사용하여 span의 고정된 길이 표현을 만듦
+- Boundary에서 관찰된 token의 표현만을 사용하여 masked span의 각 token을 예측
+- Masked span $(x_s,...,x_e) \in Y$, (s,e)는 시작과 끝의 위치
+- External boundary token $x_{s-1}, x_{e-1}$을 사용하여 encoding target token $P_i$의 position embedding을 사용하여 각 span의 token $x_i$를 나타냄
+
+![image](https://user-images.githubusercontent.com/80622859/230545849-baebdc87-f9af-4324-ae9f-a66d599f4846.png)
+
+- 본 논문에는 GELU 및 계층 정규화를 사용하여 f를 2개의 층을 가진 순전파 신경망으로 구현
+
+![image](https://user-images.githubusercontent.com/80622859/230545995-c81d43ff-cc47-4f32-92aa-20b8d6d57fca.png)
+
+- y를 사용하여 x를 예측하고 cross-entropy loss 계산
+
+
+
