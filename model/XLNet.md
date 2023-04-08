@@ -32,4 +32,26 @@
 
 ## Proposed Method: XLNet
 
-- 
+- AR가 AE의 장점을 살리고 단점을 극복하기 위한 permutation language modeling method proposal
+
+![image](https://user-images.githubusercontent.com/80622859/230705832-f9fcd051-bd2a-4360-8150-0584f5940800.png)
+
+- Input sequence index의 모든 permutation을 고려한 AR 방식
+- $[x_1,x_2,x_3,x_4]$에 대해서 순서의 permutation set은 총 4! = 24개 존재
+- $Z_T = [[1,2,3,4],[1,2,4,3],[1,3,2,4],...,[4,3,2,1]]$로 나타낼 수 있음
+- 위에서 구한 $Z_T$에 대한 AR LM의 목적 함수를 적용하면 아래와 같음
+
+![image](https://user-images.githubusercontent.com/80622859/230705960-e3182ec3-cbda-4c6b-98ed-c00c8fba89b1.png)
+
+- 각 token들은 원래 순서에 따라 positional encoding이 부여되고, permutation은 token의 index에 대해서만 진행
+- Input sequence = ['나는', '세미나', '준비를', '하고', '있다', '.']
+- 기존 순서일 경우 P(세미나|나는)P(준비를|나는,세미나)...P(.|나는,세미나,준비를,하고,있다)
+- z = [2,3,4,5,6,1], ['세미나','준비를','하고','있다','.','나는']
+- P(준비를|세미나)P(하고|세미나, 준비를)....P(나는|세마나,준비를,하고,있다,.)
+- Sequence 자체의 순서를 섞는 것이 아니라 p(x)를 조건부 확률들의 곱으로 분리할 때 이 순서를 섞는 것
+- 모형은 기존 sequence token들의 절대적 위치를 알 수 없음
+- 모든 순열을 고려하는 것은 불가능
+- 하나의 text sequence에 대해 하나의 순서를 표본 추출
+- 학습하는 동안 거의 모든 순서에 대해 공유되므로, 많은 양의 data를 거치면 모든 순서를 고려하게 됨
+- 양방향 문맥 정보 파악 가능
+
