@@ -19,3 +19,6 @@
 # SpanBERT
 - https://jeonsworld.github.io/NLP/spanbert/
 - https://velog.io/@dddwsd/SpanBERT-%EB%B2%88%EC%97%AD
+
+# XLNet 
+- https://tech.scatterlab.co.kr/xlnet-review/
