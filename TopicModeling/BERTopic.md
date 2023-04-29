@@ -29,3 +29,12 @@
 - 위의 3 가지 독립적인 단계는 dynamic topic modeling과 같은 다양한 사용 사례에서 사용할 수 있는 유연한 주제 모형을 가능케 함
 
 
+## BERTopic
+
+### Document embeddings
+
+- 동일한 주제를 포함하는 문서는 의미상 유사하다고 가정
+- SBERT(Sentence-BERT) 사용
+- SBERT는 문장과 단락을 조밀한 vector representation으로 변환할 수 있음
+- 다양한 sentence embedding에서 최첨단 성능을 달성
+- 
