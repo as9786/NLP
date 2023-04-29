@@ -22,3 +22,6 @@
 
 # XLNet 
 - https://tech.scatterlab.co.kr/xlnet-review/
+
+# SBERT 
+- https://velog.io/@choonsik_mom/SBERTSentenceBERT-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0
