@@ -37,4 +37,13 @@
 - SBERT(Sentence-BERT) 사용
 - SBERT는 문장과 단락을 조밀한 vector representation으로 변환할 수 있음
 - 다양한 sentence embedding에서 최첨단 성능을 달성
+- 이러한 embedding은 주로 의미상 유사한 문서를 군집화하는데 사용되며, 주제를 생성하는데 직접 사용 X
+- 새롭고 향상된 언어 모형이 개발됨에 따라 BERTopic의 군집화 성능이 향상됨
+
+### Document clustering
+- 고차원 공간에서 공간 지역성의 개념이 모호해지고 거리 측정이 거의 다르지 않음
+- 차원의 저주를 극복하기 위한 접근 방식이 존재하지만, 더 간단한 방식은 embedding dimension을 줄이는 것
+- PCA, t-SNE는 차원을 줄이는 잘 알려진 방법이지만 UMAP은 더 낮은 투영 차원에서 고차원 data의 local 및 global 기능을 더 많이 보존
+- 차원에 대한 계산 제한이 없음
+- UMAP을 사용하여 document embedding의 차원을 줄임
 - 
