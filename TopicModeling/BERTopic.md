@@ -27,4 +27,5 @@
 3. class based TF-IDF를 개발하여 각 주제에서 topic representation 추출
 
 - 위의 3 가지 독립적인 단계는 dynamic topic modeling과 같은 다양한 사용 사례에서 사용할 수 있는 유연한 주제 모형을 가능케 함
-- 
+
+
