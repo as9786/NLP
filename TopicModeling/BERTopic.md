@@ -46,4 +46,10 @@
 - PCA, t-SNE는 차원을 줄이는 잘 알려진 방법이지만 UMAP은 더 낮은 투영 차원에서 고차원 data의 local 및 global 기능을 더 많이 보존
 - 차원에 대한 계산 제한이 없음
 - UMAP을 사용하여 document embedding의 차원을 줄임
+- 차원 축소된 embedding은 HDBSCAN을 사용하여 군집화 
+- HDBSCAN : DBSCAN을 계층적 군집화로 변환하여 다양한 밀도의 군집을 찾는 확장 모형 
+- Soft clustering approach, noise를 이상치로 확인 가능
+- 관련 없는 문서가 특정 군집에 할당되는 것을 방지하고 topic representation을 개선
+
+### Topic Representation 
 - 
