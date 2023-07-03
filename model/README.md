@@ -25,3 +25,6 @@
 
 # SBERT 
 - https://velog.io/@choonsik_mom/SBERTSentenceBERT-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0
+
+# Big Bird
+- https://soundprovider.tistory.com/entry/2020-Big-Bird-Transformers-for-Longer-Sequences
