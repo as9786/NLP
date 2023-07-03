@@ -42,4 +42,13 @@
 
 ![image](https://github.com/as9786/NLP/assets/80622859/6301829f-fb08-4229-ba0b-ec9f0dc5b74a)
 
+- $N_i$ : Set of out-neighbors of node i(out-neighbor : Directed graph에서 node i가 가리키는 node들)
+- $Q_h, K_h(R^d \rightarrow R^m)$ : Query & key function, token embedding $x_i \in R^d$를 $R^m$ 차원으로 사상
+- $\sigma$ : Scoring function(softmax, hardmax)
+- H : Num of head
+- $X_{N_{(i)}}$ : 모든 input token이 아닌 ${x_j : j \in N_{(i)}}$에 해당하는 token embedding만 쌓아서 만든 행렬
+- 어떤 인접행렬이 0과 1로 구성되어 있고, query i가 key j에 연결되면 1, 아니면 0을 의미한다고 할 때, BERT와 같은 full self-attention을 인접행렬로 표현하면 전부 1로 채워진 인접행렬이 됨
+- 이와 같이 self-attention을 fully-connected graph로 나타낼 수 있으니 graph sparsification 이론을 적용해서 복잡도를 낮출 수 있음
+- Random graph를 확장시켜 complete graph의 여러 특징들을 근사 가능
+- 
 
