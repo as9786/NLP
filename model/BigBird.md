@@ -50,5 +50,15 @@
 - 어떤 인접행렬이 0과 1로 구성되어 있고, query i가 key j에 연결되면 1, 아니면 0을 의미한다고 할 때, BERT와 같은 full self-attention을 인접행렬로 표현하면 전부 1로 채워진 인접행렬이 됨
 - 이와 같이 self-attention을 fully-connected graph로 나타낼 수 있으니 graph sparsification 이론을 적용해서 복잡도를 낮출 수 있음
 - Random graph를 확장시켜 complete graph의 여러 특징들을 근사 가능
-- 
+
+#### Small average path length between nodes
+
+- Complete graph에서 edge들이 특정 확률에 의해 남겨진 random graph에서 두 node의 최단 경로는 node의 개수에 logarithmic하게 비례
+- Random graph의 크기를 키우고 sparse하게 만들어도 shortest path가 기하급수적으로 증가 X
+
+#### Notion of locality
+- 어떤 token의 정보는 대부분 주변 token의 정보에서 얻어지고, 멀리 떨어진 token에서 얻게 되는 정보량은 적음
+- 하지만 global token의 존재가 중요
+- BigBird-ITC(Internal Transformer Construction) : 언어 말뭉치에 존재하는 token 중 특정 몇 개를 global token으로 지정하여 모든 token들에 대해 attention 계산
+- BigBird-ETC(Extended Transformer Construction) : Sequence에 g개의 global token을 추가
 
