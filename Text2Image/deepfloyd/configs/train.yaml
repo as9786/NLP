@@ -1,0 +1,67 @@
+model:
+  model_name: "DeepFloyd/IF-I-XL-v1.0"
+  revision: None
+  variant: None
+  tokenizer_name: False
+  train_text_encoder: False
+  tokenizer_max_length: 77 
+  pre_compute_text_embeddings: True
+  text_encoder_use_attention_mask: True
+
+
+data:
+  instance_data_dir: "/data/ephemeral/home/dog"
+  instance_prompt: "a dog"
+  class_data_dir: None 
+  class_prompt: None 
+  validation_prompt: "a sks dog" 
+  num_class_images: 100
+  output_dir: "/data/ephemeral/home/deepfloyd/output"
+  resolution: 64
+  center_crop: False 
+  dataloader_num_workers: 0
+  logging_dir: logs
+  
+
+
+
+train:
+  prior_loss_weight: 1
+  train_batch_size: 4
+  sample_batch_size: 4
+  num_train_epochs: 1
+  max_train_steps: 100
+  checkpointing_steps: 100
+  checkpoints_total_limit: 0
+  resume_from_checkpoint: False
+  gradient_accumulation_steps: 1
+  learning_rate: 5e-6
+  scale_lr: True
+  lr_scheduler: "constant"
+  lr_warmup_steps: 500
+  lr_num_cycles: 1
+  lr_power: 1
+  use_8bit_adam: True
+  adam_weight_decay: 1e-2
+  adam_epsilon: 1e-08
+  max_grad_norm: 1
+
+
+  
+infer:
+  num_validation_images: 4 
+  validation_epochs: 25
+  validation_images: None 
+
+with_prior_preservation: False 
+seed: 42
+mixed_precision: "fp16"
+prior_generation_precision: "fp16"
+local_rank: -1
+class_labels_conditioning: None 
+rank: 4
+
+
+
+
+  

@@ -1,0 +1,5 @@
+project_dir: './output'
+save_dir: './sample/'
+prompt: 'a logo of electronic company "Samsung"'
+num_inference_steps: 50
+n_sample: 4
