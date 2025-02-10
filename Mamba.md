@@ -1,4 +1,4 @@
-# Mamba: Linear-Time Sequence Modeling with Selective State Paces
+# Mamba: Linear-Time Sequence Modeling with Selective State Spaces
 
 ## 초록
 
