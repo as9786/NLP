@@ -30,6 +30,7 @@
 
 ## 2. 상태 공간 모형(State Space Models, SSM)
 - Sequence model
+- 
 
 ### 상태 공간이란
 - 미로라는 공간을 가정하면, 상태 공간은 모든 가능한 공간을 의미
