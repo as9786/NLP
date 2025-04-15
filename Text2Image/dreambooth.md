@@ -28,4 +28,21 @@
     1. 새로운 문제 정의 : Subject-Driven generation
     2. 새로운 기법 제안 : Few-Shot setting에서 text-to-image diffusion model을 기존의 semantic knowledge를 유지하면서 미세 조정하는 기법
  
-  ## 2. 관련 연구 
+## 2. 관련 연구 
+
+### Cascaded Text-to-Image Diffusion Models
+- 확산 모형은 정규 분포에서 표본 추루한 변수를 점진적으로 denoising하여 data distribution을 학습하는 확률적 생성 모형
+- 고정 길이의 Markov forward process의 reverse process를 학습
+- Cascaded 방식은 출력 해상도가 64인 기본 text-to-image model을 사용하고, 2개의 text conditioning SR model을 사용
+
+### Vocabulary Encoding
+- 글 조건은 시각적 품질과 의미론적 정확도에 매우 중요
+- 기존 논문들은 학습된 사전 분포를 사용하여 image embedding으로 변환(CLIP, 대규모 언어 모형 등)
+- 본 논문에서는 사전 학습된 대규모 언어 모형 사용
+- Tokenized text prompt embedding 생성. Vocabulary encoding은 prompt embedding을 위한 전처리 단계에서 중요
+- Sentencepiece tokenizer 사용
+- Text prompt를 sentencepiece로 tokenize 시, 고정된 길이의 vector f(P)를 얻음
+- 언어 모형은 해당 token index vector로 조건화하여 embedding 생성
+- 마지막으로 text2image model이 직접적으로 c로 조건화
+
+## 3. 방법 
