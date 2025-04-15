@@ -46,3 +46,15 @@
 - 마지막으로 text2image model이 직접적으로 c로 조건화
 
 ## 3. 방법 
+- 글 설명 없이 특정 피사체에 대해 간단히 포착된 사진(3~5개)들이 주어져을 때, 높은 정확도로 text prompt에 의해 지시된 피사체의 새로운 사진을 생성하는 것이 본 논문의 목표
+- 피사체는 다양한 문맥을 가질 수 있음
+- Ex) 피사체가 있는 장소 변경, 색상, pose 등
+
+![image](https://github.com/user-attachments/assets/cd1f4963-f22e-473b-a309-757b784179e1)
+
+- 첫 번째 작업은 subject instanece를 모형의 output domain에 이식하고 피사체를 고유 식별자로 묶는 것
+- 피사체를 보여주는 작은 사진들을 미세 조정하면 주어진 사진에 대해 과적합되는 문제 발생
+- Language drift
+- 모형은 동일한 class의 다른 주제를 생성하는 방법을 잊고 다양성과 해당 class에 속하는 instance의 자연스러운 변형에 대한 지식을 잃음
+- 본 논문은 확산 모형이 주제와 동일한 class의 다양한 instance를 계속 생성하도록 장려하여 과적합을 완화하고 langauge dirft를 방지하는 autogenous class-specific prior preservation loss 제시 
+
