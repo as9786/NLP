@@ -61,3 +61,8 @@
 - Pre-trained Imagen model
 
 ![image](https://github.com/user-attachments/assets/19183145-d814-4cb0-ba1e-2c47691a2efe)
+
+### 3.1 Representing the Subject with a Rare-token Identifier
+
+#### Designing Prompts for Few-shot Personalization
+- 
