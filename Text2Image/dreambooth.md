@@ -56,5 +56,8 @@
 - 피사체를 보여주는 작은 사진들을 미세 조정하면 주어진 사진에 대해 과적합되는 문제 발생
 - Language drift
 - 모형은 동일한 class의 다른 주제를 생성하는 방법을 잊고 다양성과 해당 class에 속하는 instance의 자연스러운 변형에 대한 지식을 잃음
-- 본 논문은 확산 모형이 주제와 동일한 class의 다양한 instance를 계속 생성하도록 장려하여 과적합을 완화하고 langauge dirft를 방지하는 autogenous class-specific prior preservation loss 제시 
+- 본 논문은 확산 모형이 주제와 동일한 class의 다양한 instance를 계속 생성하도록 장려하여 과적합을 완화하고 langauge dirft를 방지하는 autogenous class-specific prior preservation loss 제시
+- 꼼꼼하기 위해서는 모형의 초해상도 부분도 미세 조정 해야 됨
+- Pre-trained Imagen model
 
+![image](https://github.com/user-attachments/assets/19183145-d814-4cb0-ba1e-2c47691a2efe)
