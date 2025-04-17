@@ -65,4 +65,13 @@
 ### 3.1 Representing the Subject with a Rare-token Identifier
 
 #### Designing Prompts for Few-shot Personalization
-- 
+- 새로운 쌍을 확산 모형의 사전에 삽입하여 주제에 대한 key가 주어지면 text prompt로 유의미한 의미 수정을 통해 이 특정 주제의 완전히 새로운 사진을 생성할 수 있도록 하는 것
+- "a [identifier] [class noun]"의 모든 입력 사진에 label을 지정
+- [identifier] : 주제에 연결된 고유 식별자. [class noun] : 주제의 대략적인 class descriptor
+- Class descriptor는 분류기를 통해 얻음
+- Class의 사전 분포를 고유한 주제에 연결하기 위해 문장에서 class descriptor를 특별히 사용
+- 본질적으로 확산 모형의 특정 class에 대한 사전 분포를 활용하고 이를 대상의 unique identifier embedding과 얽히게 하려고 함
+- 다양한 맥락에서 피사체의 새로운 표현을 생성하기 전에 시각적인 요소를 활용
+- 언어 모형과 확산 모형 모두에서의 weak prior를 갖는 식별자가 필요
+
+#### Rare-token Identifiers 
