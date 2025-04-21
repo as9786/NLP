@@ -75,3 +75,10 @@
 - 언어 모형과 확산 모형 모두에서의 weak prior를 갖는 식별자가 필요
 
 #### Rare-token Identifiers 
+- 단어에서 상대적으로 rare-token을 찾은 다음 text space로 반전시킴
+- 먼저 단어에서 rare-token lookup을 수행. Rare token identifier의 sequence $f(\hat V)$를 얻음
+- f : Tokenizer, $f(\hat V)$ : Text sequence를 token에 mapping하는 함수, $\hat V$ : token $f(\hat V)$에서 파생된 decoded text, k : 가변 길이(초매개변수)
+- 상대적으로 짧은 sequence(k=1,2,3)에서 잘 작동
+- $f(\hat V)$에 de-tokenizer를 사용해 단어를 반전하여 고유 식별자 $\hat V$를 정의하는 일련의 문자를 얻음
+
+- 
