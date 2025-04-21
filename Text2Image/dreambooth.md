@@ -81,4 +81,9 @@
 - 상대적으로 짧은 sequence(k=1,2,3)에서 잘 작동
 - $f(\hat V)$에 de-tokenizer를 사용해 단어를 반전하여 고유 식별자 $\hat V$를 정의하는 일련의 문자를 얻음
 
-- 
+### 3.2 Class-specific Prior Preservation Loss
+
+#### Few-shot Personalization of a Diffusion Model
+- 목표 대상을 묘사하는 작은 image set and text prompt 'a [identifier] [class noun]'에서 얻은 동일한 condition vector $c_s$를 사용하여 원본 확산 모형의 denoising loss로 text2img fine tuning
+- 위 방식은 두 과적합과 language drift라는 문제 발생
+
