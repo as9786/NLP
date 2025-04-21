@@ -87,3 +87,10 @@
 - 목표 대상을 묘사하는 작은 image set and text prompt 'a [identifier] [class noun]'에서 얻은 동일한 condition vector $c_s$를 사용하여 원본 확산 모형의 denoising loss로 text2img fine tuning
 - 위 방식은 두 과적합과 language drift라는 문제 발생
 
+1. 과적합 문제
+    - 입력 값이 매우 적기 때문에 큰 사진 생성 모형을 미세조정하면 주어진 입력 사진에서 피사체의 context and shape 모두에 과적합 가능
+    - 모형의 모든 층을 미세 조정 시 좋은 성능
+    - 하지만 text embedding을 조건으로 하는 미세 조정 층이 모함되어 있어 language drift 문제 발생
+2. Language Drift
+    - 큰 text corpus에 대해 사전 학습되고 나중에 특정 작업을 위해 미세 조정된 언어 모형은 대상 작업을 개선하기 위해 학습함에 따라 언어의 구조적 지식과 의미론적 지식을 점진적으로 잃음
+    - 
