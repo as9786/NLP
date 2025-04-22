@@ -103,5 +103,27 @@
 ![image](https://github.com/user-attachments/assets/7431d01b-aba6-4c12-85e3-15e4206007c2)
 
 - $\lambda$ : Prior-Preservation 항의 상대적 가중치를 조절하는 ㄱ밧
-- 
 
+### 3.3 Personalized Instance-Specific Super-Resolution
+- 초해상도 모형은 사실적인 contents를 달성하고, 대상 instance detail을 보존하는데 필수적
+
+## 4. 실험
+- 주제에 정체성이나 본질을 부여하는 고유한 시작적 특징을 보존
+
+### 4.1 기능
+
+#### Recntextualization
+
+![image](https://github.com/user-attachments/assets/b0d41493-3ad8-4b56-9762-4f91d4975ecc)
+
+#### Art Renditions
+
+![image](https://github.com/user-attachments/assets/181d6271-675f-47ea-a40e-fe02946b7c34)
+
+#### Expression Manipulation
+
+![image](https://github.com/user-attachments/assets/0b475658-6259-4c37-b823-2deaaad2d3ef)
+
+#### Novel View Synthesis
+
+![image](https://github.com/user-attachments/assets/a422b869-13db-4c28-936f-c18dd5d235e2)
