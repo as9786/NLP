@@ -93,4 +93,15 @@
     - 하지만 text embedding을 조건으로 하는 미세 조정 층이 모함되어 있어 language drift 문제 발생
 2. Language Drift
     - 큰 text corpus에 대해 사전 학습되고 나중에 특정 작업을 위해 미세 조정된 언어 모형은 대상 작업을 개선하기 위해 학습함에 따라 언어의 구조적 지식과 의미론적 지식을 점진적으로 잃음
-    - 
+    - Text promp에는 [identifier]와 [class noun]이 모두 포함되어 있기 때문에 확산 모형이 작은 subject imageset에서 미세 조정될 때, 동일한 class의 주제를 생성하는 방법을 잊고 class 별 prior를 점진적으로 잊어버림
+
+#### Prior-Preservation Loss
+- 모형을 자체 생성한 sample들로 지도 학습하며, few-shot fine tuning이 시작한 후 사전 분포를 유지
+- Random noise $z_{t_1} ~N(0,I)$와 conditioning vector $c_{pr}=\Gamma(f("a\,[class\,noun]"))$가 있는 고정된 사전 학습된 확산 모형에서 ancestral sampler를 사용하여 ㅇdata $x_{pr}=\hat x(z_{t_1},c_{pr})$을 생성
+- 손실
+
+![image](https://github.com/user-attachments/assets/7431d01b-aba6-4c12-85e3-15e4206007c2)
+
+- $\lambda$ : Prior-Preservation 항의 상대적 가중치를 조절하는 ㄱ밧
+- 
+
