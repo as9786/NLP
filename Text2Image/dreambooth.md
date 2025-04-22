@@ -97,7 +97,7 @@
 
 #### Prior-Preservation Loss
 - 모형을 자체 생성한 sample들로 지도 학습하며, few-shot fine tuning이 시작한 후 사전 분포를 유지
-- Random noise $z_{t_1} ~N(0,I)$와 conditioning vector $c_{pr}=\Gamma(f("a\,[class\,noun]"))$가 있는 고정된 사전 학습된 확산 모형에서 ancestral sampler를 사용하여 ㅇdata $x_{pr}=\hat x(z_{t_1},c_{pr})$을 생성
+- Random noise $z_{t_1} ~N(0,I)$와 conditioning vector $c_{pr}=\Gamma(f("a [class noun]"))$가 있는 고정된 사전 학습된 확산 모형에서 ancestral sampler를 사용하여 ㅇdata $x_{pr}=\hat x(z_{t_1},c_{pr})$을 생성
 - 손실
 
 ![image](https://github.com/user-attachments/assets/7431d01b-aba6-4c12-85e3-15e4206007c2)
