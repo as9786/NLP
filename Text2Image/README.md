@@ -10,6 +10,8 @@
 # Stable Diffusion
 -https://brunch.co.kr/@advisor/43
 
+# Dreambooth
+- https://kimjy99.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/dreambooth/
 
 # Dataset
 - https://drive.google.com/drive/folders/16ATKnf1jp7BYWppYT6ifTjfa4zBkiK6w?usp=sharing
