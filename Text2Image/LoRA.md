@@ -36,7 +36,8 @@
 - 사전학습된 언어 모형은 임의의 더 작은 부분 공간으로 전사되어도 효과적으로 학습 가능
 - Low instrisic dimension : 겉보기에는 큰 행렬이지만, 실제로는 적은 수의 방향만 필요
 - $h = W_0 x + \nabla W_x = W_0 x + BAx$
-- $W_0$ : 사전 학습 가중치 행렬(d x k), B, A : 학습가능한 분해 행렬 (d x r, r x k), r : LoRA rank ( $$ r \leq min(d,k)$$ ) 
+- $W_0$ : 사전 학습 가중치 행렬(d x k), B, A : 학습가능한 분해 행렬 (d x r, r x k), r : LoRA rank (r ≤ min(d, k)) 
 - A : Random Gaussian, B : Zero matrix
-- 
+- Only train A and B
+
 
