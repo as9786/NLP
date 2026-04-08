@@ -12,7 +12,7 @@
 
 ### 2-1. 손실 함수
 - RLHF loss function
-  - $L_R (r_\phi D) = -E(_{(x,y_w,y_l)\sim D}[log \sigma (r_\phi (x,y_w)- r_\phi (x, y_l))]$
+  - $L_R (r_{\phi}, D) = -E(_{(x,y_w,y_l)\sim D} [log \sigma (r_{\phi} (x,y_w)- r_{\phi} (x, y_l))]$
 - 보상 모형의 모수를 정책 모형의 모수로 바꿔야 함
 - 1단계 학습 가능
 - DPO loss function
