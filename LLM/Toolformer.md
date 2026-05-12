@@ -31,6 +31,16 @@
 - 모형은 위에서 숫자 계산이 필요하면 계산기 API를 호출한다는 것을 학습
 - 새로운 문장에도 자동으로 API 삽입
 - API 호출이 필요해 보이는 위치를 모형이 확률적으로 선택
-- $p_M(<API>|z_1, ..., z_i)$
+- $p_M(API|z_1, ..., z_i)$
 - 최대 k개까지 샘플링. 모든 위치에 API를 넣으면 너무 비효율적
+
+### 2-2. Executing API Calls
+- Call APIs and get the results
+- 응답은 하나의 문자열 형태를 가져야 함
+
+### 2-3. Filtering API Calls
+- $c_i$ : i 위치에서의 API 호출, $r_i$ : API의 호출, w : 문자열 가중치
+- i 이후 위치의 token을 예측하는데 모형의 어려움 = Weighted corss-entropy
+
+
 
