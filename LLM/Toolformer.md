@@ -42,5 +42,11 @@
 - $c_i$ : i 위치에서의 API 호출, $r_i$ : API의 호출, w : 문자열 가중치
 - i 이후 위치의 token을 예측하는데 모형의 어려움 = Weighted corss-entropy
 
+<img width="326" height="67" alt="image" src="https://github.com/user-attachments/assets/b249c08f-1c45-4b3e-8d9b-4d7f7e0ccc0f" />
+
+- API 결과까지 제공한 손실과 제거한 손실 두 가지를 사용
+- API 결과를 제거한 손실 - API 결과를 포함한 손실 > 임계값
+- API 결과를 제거한 것과 포함한 것의 손실 차이가 크면 API가 유용하다고 판단
+
 
 
